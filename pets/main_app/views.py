@@ -6,3 +6,7 @@ from .models import Service
 def home(request):
     services = Service.objects.all()
     return render(request, 'home.html', {'services': services})
+
+def services_detail(request, service_id):
+    service = Service.objects.get(id = service_id)
+    return render(request, 'services/detail.html', {'service' : service})
