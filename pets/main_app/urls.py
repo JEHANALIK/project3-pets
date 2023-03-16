@@ -5,5 +5,5 @@ urlpatterns = [
     #R outes in express , urls in django
     path('', views.home , name='home'),
     path('services/<int:service_id>', views.services_detail, name='detail'),
-    
+    path('appointments/create', views.AppointmentsCreate.as_view(), name='appointments_create'),
 ]
