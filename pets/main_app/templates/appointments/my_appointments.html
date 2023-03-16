@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{%for appointment in appointments%}
+<div class="card mb-4">
+    <h5 class="card-header">Service:</h5>
+    <div class="card-body">
+      <h5 class="card-title">Date:{{appointment.date}}</h5>
+      <p class="card-text">Time:{{appointment.time}}</p>
+      <a href="{% url 'appointments_delete' appointment.id %}" class="btn btn-primary">Cancel Appointment</a>
+    </div>
+  </div>
+  {%endfor%}
+
+
+
+{%endblock%}
