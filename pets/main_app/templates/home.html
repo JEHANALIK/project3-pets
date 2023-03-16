@@ -47,7 +47,7 @@
         <div class="card-body">
           <h5 class="card-title">{{service.name}}</h5>
         </div>
-        <a href="#" class="btn btn-primary">Read More</a>
+        <a href="{% url 'detail' service.id %}" class="btn btn-primary">Read More</a>
       </div>
       {%endfor%}
     </div>
