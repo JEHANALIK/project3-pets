@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Service , Appointments, Pets
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+
 
 # from django.contrib.auth.decorators import login_required
 
@@ -35,11 +38,19 @@ class AppointmentsDelete(DeleteView):
     model = Appointments
     success_url= '/myAppointments/'
 
+def pets_index(request):
+    pets = Pets.objects.all()
+    return render(request, 'pets/index.html', {'pets': pets})
+
+def pets_detail(request, pet_id):
+    pets = Pets.objects.get(id=pet_id)
+    return render(request, 'pets/detail.html', {'pets': pets})
+
 
 # create pets
 class PetsCreate(CreateView):
     model= Pets
-    fields= '__all__'
+    fields= ['name', 'type', 'breed', 'description', 'age', 'image']
 
 # view all pets
 def my_pets(request):
@@ -48,13 +59,24 @@ def my_pets(request):
 
 # delete pets
 class PetsDelete(DeleteView):
-    models = Pets
-    success_url= '/Pets/'
+    model = Pets
+    success_url= '/pets/'
 
 # update pets
-# class PetsUpdate(LoginRequiredMixin, UpdateView):
-#     model = Pets
-#     fields = ['name', 'type', 'breed', 'description', 'age', 'image', 'appointments']
+class PetsUpdate(UpdateView):
+    model = Pets
+    fields = ['name', 'type', 'breed', 'description', 'age', 'image']
 
-
-
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('/')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
