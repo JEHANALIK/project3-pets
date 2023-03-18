@@ -35,11 +35,19 @@ class AppointmentsDelete(DeleteView):
     model = Appointments
     success_url= '/myAppointments/'
 
+def pets_index(request):
+    pets = Pets.objects.all()
+    return render(request, 'pets/index.html', {'pets': pets})
+
+def pets_detail(request, pet_id):
+    pets = Pets.objects.get(id=pet_id)
+    return render(request, 'pets/detail.html', {'pets': pets})
+
 
 # create pets
 class PetsCreate(CreateView):
     model= Pets
-    fields= '__all__'
+    fields= ['name', 'type', 'breed', 'description', 'age', 'image']
 
 # view all pets
 def my_pets(request):
@@ -48,13 +56,13 @@ def my_pets(request):
 
 # delete pets
 class PetsDelete(DeleteView):
-    models = Pets
-    success_url= '/Pets/'
+    model = Pets
+    success_url= '/pets/'
 
 # update pets
-# class PetsUpdate(LoginRequiredMixin, UpdateView):
-#     model = Pets
-#     fields = ['name', 'type', 'breed', 'description', 'age', 'image', 'appointments']
+class PetsUpdate(UpdateView):
+    model = Pets
+    fields = ['name', 'type', 'breed', 'description', 'age', 'image']
 
 
 
