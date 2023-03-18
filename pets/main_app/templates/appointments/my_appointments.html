@@ -7,7 +7,7 @@
     <div class="card-body">
       <h5 class="card-title">Date:{{appointment.date}}</h5>
       <p class="card-text">Time:{{appointment.time}}</p>
-      <a href="{% url 'appointments_delete' appointment.id %}" class="btn btn-primary">Cancel Appointment</a>
+      <a href="{% url 'appointments_detail' appointment.id %}" class="btn btn-primary">appointment detail</a>
     </div>
   </div>
   {%endfor%}

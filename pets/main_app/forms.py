@@ -5,3 +5,4 @@ class AppointmentsForm(ModelForm):
     class Meta:
         model = Appointments
         fields = ['date', 'time']
+

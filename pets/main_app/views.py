@@ -26,14 +26,19 @@ def my_appointments(request):
     appointments = Appointments.objects.all()
     return render(request, 'appointments/my_appointments.html', {'appointments':appointments})
 
+def appointments_detail(request , appointment_id):
+    appointment = Appointments.objects.get(id=appointment_id)
+    return render(request, 'appointments/detail.html' , {'appointment':appointment})
+
 # delete appointments
 class AppointmentsDelete(DeleteView):
     model = Appointments
     success_url= '/myAppointments/'
 
+
 # create pets
 class PetsCreate(CreateView):
-    models= Pets
+    model= Pets
     fields= '__all__'
 
 # view all pets
@@ -50,3 +55,6 @@ class PetsDelete(DeleteView):
 # class PetsUpdate(LoginRequiredMixin, UpdateView):
 #     model = Pets
 #     fields = ['name', 'type', 'breed', 'description', 'age', 'image', 'appointments']
+
+
+
