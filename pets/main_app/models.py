@@ -13,22 +13,6 @@ class Service(models.Model):
     price= models.FloatField()
     image= models.ImageField(upload_to='main_app/static/uploads', blank=True)
 
-
-class Appointments(models.Model):
-    date = models.DateField()
-    time= models.TimeField()
-    
-    class Meta:
-        ordering = ['-date']
-
-    def get_absolute_url(self):
-        return reverse("appointments_detail", kwargs={"appointment_id": self.id})
-
-# TYPES = [
-#     ('C', 'Cat'),
-#     ('D', 'Dog')
-# ]
-
 class Pets(models.Model):
 
     class PetType(models.TextChoices):
@@ -46,5 +30,31 @@ class Pets(models.Model):
     age = models.IntegerField()
     description = models.TextField(max_length=300)
     image = models.ImageField(upload_to='main_app/static/uploads', blank=True)
-    appointments = models.ForeignKey(Appointments, on_delete=models.CASCADE)
+    # appointments = models.ForeignKey(Appointments, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("pets_detail", kwargs={"pet_id": self.id})
     
+
+
+class Appointments(models.Model):
+    date = models.DateField()
+    time= models.TimeField()
+    pets = models.ForeignKey(Pets, on_delete=models.CASCADE)
+    
+    class Meta:
+        ordering = ['-date']
+
+    
+
+    def get_absolute_url(self):
+        return reverse("appointments_detail", kwargs={"appointment_id": self.id})
+
+# TYPES = [
+#     ('C', 'Cat'),
+#     ('D', 'Dog')
+# ]
+
