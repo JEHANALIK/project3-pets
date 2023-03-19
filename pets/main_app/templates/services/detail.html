@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<h1>{{ service.name }} details </h1>
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-content">
+            <div class="card-title">
+                {{ service.name }} 
+            </div>
+            <p>Description: {{ service.description }}</p>
+            <p>Price: {{ service.price }}</p>
+            <img src="{% static 'images/first-image.jpg'%}" alt="">
+        </div>
+        <div class="card-action">
+            <a href="{% url 'appointments_create' %}">Book an appointment</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

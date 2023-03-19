@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+
+<div class="first">
+    <div class="card mb-3 ">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h1 class="card-title first-title">Card title</h1>
+              <p class="card-text first-p">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+            <div class="col-md-4 first-image">
+              <img class="first-image1 " src="{% static 'images/first-image1.jpg'%}"  alt="...">
+              <img class="first-image2" src="{% static 'images/first-image2.jpg'%}"   alt="...">
+              <img class="first-image3" src="{% static 'images/first-image33copy.jpg'%}"  alt="...">
+              <img class="first-image4" src="{% static 'images/first-image5.jpg'%}" alt="...">  
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="second">
+    <div class="card mb-3 mt-3 second " style="max-width: 200vh;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img class="second-image" src="{% static 'images/second-image.jpg'%}" class="img-fluid rounded-start" alt="...">
+              </div>
+          <div class="col-md-8 ">
+            <div class="card-body">
+              <h1 class="card-title second-title">Card title</h1>
+              <p class="card-text second-p">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+</div>
+
+<h1>Services</h1>
+<hr>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 ">
+    {% for service in services%}
+    <div class="col>
+      <div class="card">
+        <img src="{% static service.image|cut:'main_app/static'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{service.name}}</h5>
+        </div>
+        <a href="{% url 'detail' service.id %}" class="btn btn-primary">Read More</a>
+      </div>
+      {%endfor%}
+    </div>
+
+{% endblock %}
