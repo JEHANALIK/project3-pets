@@ -17,4 +17,6 @@ urlpatterns = [
     path('pets/<int:pk>/delete', views.PetsDelete.as_view(), name='pets_delete'),
 
     path('accounts/signup/', views.signup, name='signup'),
+
+    # path('profile', us)
 ]
