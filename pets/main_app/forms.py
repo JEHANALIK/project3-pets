@@ -4,7 +4,7 @@ from .models import Appointments
 class AppointmentsForm(ModelForm):
     class Meta:
         model = Appointments
-        fields = ['date', 'time']
+        fields = ['date', 'time', 'pets']
 
     # def __init__(self, *args, **kwargs):
     #    user = kwargs.pop('user')
