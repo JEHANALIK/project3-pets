@@ -27,10 +27,9 @@
                           Services
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="#">Surgeries</a></li>
-                          <li><a class="dropdown-item" href="#">Grooming</a></li>
-                          <li><a class="dropdown-item" href="#">Vaccination</a></li>
-                          <li><a class="dropdown-item" href="#">Consultations</a></li>
+                          {%for service in services%}
+                          <li><a class="dropdown-item" href="{% url 'detail' service.id%}">{{service.name}}</a></li>
+                          {%endfor%}
                         </ul>
                       </li>
                   {% comment %} {% if user.is_authenticated %} {% endcomment %}
