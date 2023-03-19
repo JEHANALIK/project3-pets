@@ -52,6 +52,10 @@ class PetsCreate(CreateView):
     model= Pets
     fields= ['name', 'type', 'breed', 'description', 'age', 'image']
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 # view all pets
 def my_pets(request):
     pets = Pets.objects.all()
