@@ -39,7 +39,7 @@ class AppointmentsDelete(DeleteView):
     success_url= '/myAppointments/'
 
 def pets_index(request):
-    pets = Pets.objects.all()
+    pets = Pets.objects.filter(user=request.user)
     return render(request, 'pets/index.html', {'pets': pets})
 
 def pets_detail(request, pet_id):
