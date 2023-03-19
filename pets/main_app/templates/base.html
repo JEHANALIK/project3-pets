@@ -27,7 +27,7 @@
                           Services
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          {%for service in services%}
+                          {%for service in services_list%}
                           <li><a class="dropdown-item" href="{% url 'detail' service.id%}">{{service.name}}</a></li>
                           {%endfor%}
                         </ul>
