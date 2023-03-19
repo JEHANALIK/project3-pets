@@ -28,9 +28,7 @@ class AppointmentsCreate(CreateView):
     # exclude = ('pets')
 
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+    
     
     # def get_form(self, *args, **kwargs):
     #     print('saad')
@@ -43,12 +41,18 @@ class AppointmentsCreate(CreateView):
     #     return form
 
     def get_context_data(self, **kwargs):
-        print("khan")
+        # print("khan")
         context = super().get_context_data(**kwargs)
         user = self.request.user
         context["pets"] = user.pets_set.all()
-        print("context", context)
+        # print("context", context)
         return context
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.pets_id = self.request.POST['pets']
+        print("pets", self.request.POST['pets'])
+        return super().form_valid(form)
         
     # def get_form_kwargs(self):
     #     kwargs = super(AppointmentsCreate, self).get_form_kwargs()
