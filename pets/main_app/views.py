@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Service , Appointments, Pets
@@ -23,11 +24,41 @@ def services_detail(request, service_id):
 # create appointments
 class AppointmentsCreate(CreateView):
     model= Appointments
-    fields= ['time', 'date', 'pets']
+    fields= ['time', 'date']
+    # exclude = ('pets')
+
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+    # def get_form(self, *args, **kwargs):
+    #     print('saad')
+    #     form = super(AppointmentsCreate, self).get_form(*args, **kwargs)
+    #         # so in the GET.   Limit choices queryset.
+    #     form.pets = Pets.objects.get(user_id = self.request.user.id)
+    #     print("pets", form.pets)
+    #     form['pets'].queryset = Pets.objects.filter(user_id =self.request.user.id)
+    #     print(form)
+    #     return form
+
+    def get_context_data(self, **kwargs):
+        print("khan")
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        context["pets"] = user.pets_set.all()
+        print("context", context)
+        return context
+        
+    # def get_form_kwargs(self):
+    #     kwargs = super(AppointmentsCreate, self).get_form_kwargs()
+    #     kwargs['pets'] = self.request.user
+    #     return kwargs
+
+    # def get_queryset(self):
+    #     pets = Pets.objects.filter(user=self.request.user)
+    #     print("pets", pets)
+    #     return pets
 
 # view all the appointments
 def my_appointments(request):

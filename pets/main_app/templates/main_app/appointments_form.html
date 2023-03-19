@@ -14,13 +14,19 @@
     {%csrf_token%}
 <div class="mb-3">
     {{form.as_table}}
-    <label for="exampleFormControlInput1" class="form-label">Date</label>
+    {% comment %} <label for="exampleFormControlInput1" class="form-label">Date</label>
     <input type="date" class="form-control" id="exampleFormControlInput1">
   </div>
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Time:</label>
     <input type="time" class="form-control" id="exampleFormControlInput1">
-  </div>
+  </div> {% endcomment %}
+
+  {% comment %} pet value {% endcomment %}
+  {% comment %} {% for pet in context%}
+  {{pet['pets']}}
+{% endfor %} {% endcomment %}
+
   <input type="submit" value="Book!" class="btn btn-primary">
 </form>
 
