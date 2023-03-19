@@ -33,7 +33,7 @@
                           <li><a class="dropdown-item" href="#">Consultations</a></li>
                         </ul>
                       </li>
-                  {% if user.is_authenticated %}
+                  {% comment %} {% if user.is_authenticated %} {% endcomment %}
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{% url 'pets_index' %}">My pets</a>
                   </li>
@@ -49,14 +49,14 @@
                       <li><a class="dropdown-item" href="#">Change Security</a></li>
                       <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
                     </ul>
-                    {% else %}
+                    {% comment %} {% else %} {% endcomment %}
                     <li class="nav-item">
                       <a class="nav-link" aria-current="page" href="{% url 'login' %}">Login</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'signup'%}">Sign Up</a>
                     </li>
-                  {% endif %}
+                  {% comment %} {% endif %} {% endcomment %}
                   </li>
                 </ul>
               </div>
