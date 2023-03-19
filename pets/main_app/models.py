@@ -56,8 +56,6 @@ class Appointments(models.Model):
     class Meta:
         ordering = ['-date']
 
-    
-
     def get_absolute_url(self):
         return reverse("appointments_detail", kwargs={"appointment_id": self.id})
 
