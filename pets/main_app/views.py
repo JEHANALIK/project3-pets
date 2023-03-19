@@ -22,11 +22,15 @@ def services_detail(request, service_id):
 # create appointments
 class AppointmentsCreate(CreateView):
     model= Appointments
-    fields= '__all__'
+    fields= ['time', 'date', 'pets']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 # view all the appointments
 def my_appointments(request):
-    appointments = Appointments.objects.all()
+    appointments = Appointments.objects.filter(user=request.user)
     return render(request, 'appointments/my_appointments.html', {'appointments':appointments})
 
 def appointments_detail(request , appointment_id):

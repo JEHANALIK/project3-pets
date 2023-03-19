@@ -52,7 +52,7 @@ class Appointments(models.Model):
     date = models.DateField()
     time= models.TimeField()
     pets = models.ForeignKey(Pets, on_delete=models.CASCADE)
-    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     class Meta:
         ordering = ['-date']
 
