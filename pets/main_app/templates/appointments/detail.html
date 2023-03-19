@@ -10,6 +10,7 @@
         <span class="card-title">{{ appointment.date }}</span>
         <p>time: {{ appointment.time }}</p>
         <p>pet: {{ appointment.pets }}</p>
+        <p>service: {{ appointment.service.name }}</p>
       </div>
       <a href="{% url 'appointments_delete' appointment.id %}" class="btn btn-primary">Cancel Appointment</a>
       </div>
