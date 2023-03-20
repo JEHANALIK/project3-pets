@@ -1,3 +1,4 @@
+
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -6,7 +7,14 @@ from .models import Appointments, Profile
 class AppointmentsForm(forms.ModelForm):
     class Meta:
         model = Appointments
-        fields = ['date', 'time', 'pets']
+
+        fields = ['date', 'time']
+
+        widgets= {
+            'date': forms.DateInput(attrs={'class': 'form-control'}),
+            'time': forms.TimeInput(attrs={'class': 'form-control'}),
+        }
+
 
     # def __init__(self, *args, **kwargs):
     #    user = kwargs.pop('user')
@@ -24,8 +32,10 @@ class UpdateUserForm(forms.ModelForm):
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
 
+
 class UpdateProfileForm(forms.ModelForm):
     phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+
 
     class Meta:
         model = Profile
