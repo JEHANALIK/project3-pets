@@ -22,17 +22,23 @@ class Service(models.Model):
     price= models.FloatField()
     image= models.ImageField(upload_to='main_app/static/uploads', blank=True)
 
+TYPES = (
+    ('C', 'Cat'),
+    ('D', 'Dog')
+)
+
 class Pets(models.Model):
 
-    class PetType(models.TextChoices):
-        dog = 'D', _('Dog')
-        cat = 'C' , _('Cat')
+    # class PetType(models.TextChoices):
+    #     dog = 'D', _('Dog')
+    #     cat = 'C' , _('Cat')
         
 
     name = models.CharField(max_length=100)
     type = models.CharField(
-        max_length = 2,
-        choices = PetType.choices,
+        max_length = 1,
+        choices = TYPES,
+        default= TYPES[0][0]
         # default = PetType.dog
      )
     breed = models.CharField(max_length=100)
