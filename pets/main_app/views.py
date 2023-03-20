@@ -12,8 +12,9 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 
 
-# IMPORT FORMS -
-from .forms import AppointmentsForm , PetsForm
+
+# IMPORT FORMS
+from .forms import AppointmentsForm
 from django.contrib.auth.decorators import login_required
 from .forms import UpdateUserForm, UpdateProfileForm
 
@@ -110,6 +111,8 @@ def pets_detail(request, pet_id):
 # create pets
 class PetsCreate(CreateView):
     model= Pets
+    # form_class = PetsForm
+    fields= ['name', 'type', 'breed', 'description', 'age', 'image']
     # form_class = PetsForm
     fields= ['name', 'type', 'breed', 'description', 'age', 'image']
 
