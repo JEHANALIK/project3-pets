@@ -27,6 +27,22 @@
   {{pet['pets']}}
 {% endfor %} {% endcomment %}
 
+
+
+
+<label for="pets">Choose a pet:</label>
+<select id="pets" name="pets">
+  {%for x in pets%}
+  <option value="{{x.id}}">{{x}}</option>
+  {%endfor%}
+</select>
+
+<select id="services" name="services">
+  {%for service in services_list%}
+  <option value="{{service.id}}">{{service.name}}</option>
+  {%endfor%}
+</select>
+
   <input type="submit" value="Book!" class="btn btn-primary">
 </form>
 

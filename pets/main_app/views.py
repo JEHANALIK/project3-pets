@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Service , Appointments, Pets
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
@@ -24,13 +25,11 @@ def services_detail(request, service_id):
 class AppointmentsCreate(CreateView):
     model= Appointments
     fields= ['time', 'date']
-    # exclude = ('pets')
 
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+
     
+
     # def get_form(self, *args, **kwargs):
     #     print('saad')
     #     form = super(AppointmentsCreate, self).get_form(*args, **kwargs)
@@ -42,12 +41,28 @@ class AppointmentsCreate(CreateView):
     #     return form
 
     def get_context_data(self, **kwargs):
-        print("khan")
+        # print("khan")
         context = super().get_context_data(**kwargs)
         user = self.request.user
         context["pets"] = user.pets_set.all()
-        print("context", context)
+        # print("context", context)
         return context
+    
+    # def get_service_data(self, **kwargs):
+    #     # print("khan")
+    #     service = super().get_service_data(**kwargs)
+    #     s = self.request.service
+    #     s["services"] = s.services_set.all()
+    #     # print("context", context)
+    #     return s       
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.pets_id = self.request.POST['pets']
+        form.instance.service_id = self.request.POST['services']
+        # form.instance.services_id = self.request.POST['services']
+        print("pets", self.request.POST['pets'])
+        return super().form_valid(form)
         
     # def get_form_kwargs(self):
     #     kwargs = super(AppointmentsCreate, self).get_form_kwargs()
