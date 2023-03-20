@@ -1,18 +1,10 @@
 from django.forms import ModelForm
-<<<<<<< HEAD
-from .models import Appointments
-=======
 from .models import Appointments , Pets , User, Service
->>>>>>> 76b160cc864fd95481a4c65df1afa30197f37beb
 from django import forms
 
 class AppointmentsForm(forms.ModelForm):
     class Meta:
         model = Appointments
-<<<<<<< HEAD
-        fields = ['date', 'time', 'pets']
-        widgets = {'date': forms.DateInput(attrs={'class':'datepicker'})}
-=======
         fields = ['date', 'time']
 
         widgets= {
@@ -35,5 +27,4 @@ class PetsForm(forms.ModelForm):
 
     
 
->>>>>>> 76b160cc864fd95481a4c65df1afa30197f37beb
 
