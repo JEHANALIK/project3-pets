@@ -25,11 +25,11 @@ def services_detail(request, service_id):
 class AppointmentsCreate(CreateView):
     model= Appointments
     fields= ['time', 'date']
-    # exclude = ('pets')
+
 
 
     
-    
+
     # def get_form(self, *args, **kwargs):
     #     print('saad')
     #     form = super(AppointmentsCreate, self).get_form(*args, **kwargs)
@@ -48,9 +48,19 @@ class AppointmentsCreate(CreateView):
         # print("context", context)
         return context
     
+    # def get_service_data(self, **kwargs):
+    #     # print("khan")
+    #     service = super().get_service_data(**kwargs)
+    #     s = self.request.service
+    #     s["services"] = s.services_set.all()
+    #     # print("context", context)
+    #     return s       
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.instance.pets_id = self.request.POST['pets']
+        form.instance.service_id = self.request.POST['services']
+        # form.instance.services_id = self.request.POST['services']
         print("pets", self.request.POST['pets'])
         return super().form_valid(form)
         

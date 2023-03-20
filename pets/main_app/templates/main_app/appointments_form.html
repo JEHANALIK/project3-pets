@@ -37,6 +37,12 @@
   {%endfor%}
 </select>
 
+<select id="services" name="services">
+  {%for service in services_list%}
+  <option value="{{service.id}}">{{service.name}}</option>
+  {%endfor%}
+</select>
+
   <input type="submit" value="Book!" class="btn btn-primary">
 </form>
 

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+from datetime import datetime, time
 
 # Create your models here.
 
@@ -53,6 +54,8 @@ class Appointments(models.Model):
     time= models.TimeField()
     pets = models.ForeignKey(Pets, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+
     class Meta:
         ordering = ['-date']
 
