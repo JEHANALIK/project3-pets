@@ -6,6 +6,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
+
 
 
 # from django.contrib.auth.decorators import login_required
@@ -21,15 +25,15 @@ def services_detail(request, service_id):
     service = Service.objects.get(id = service_id)
     return render(request, 'services/detail.html', {'service' : service})
 
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'registration/change-password.html'
+    success_message = "Successfully Changed Your Password!"
+    success_url = reverse_lazy('change_password')
+
 # create appointments
 class AppointmentsCreate(CreateView):
     model= Appointments
     fields= ['time', 'date']
-
-
-
-    
-
     # def get_form(self, *args, **kwargs):
     #     print('saad')
     #     form = super(AppointmentsCreate, self).get_form(*args, **kwargs)

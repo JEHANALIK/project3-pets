@@ -27,9 +27,6 @@
   {{pet['pets']}}
 {% endfor %} {% endcomment %}
 
-
-
-
 <label for="pets">Choose a pet:</label>
 <select id="pets" name="pets">
   {%for x in pets%}
@@ -45,5 +42,11 @@
 
   <input type="submit" value="Book!" class="btn btn-primary">
 </form>
+
+<script>
+  $(document).ready(function(){
+      $('.datepicker').datepicker();
+  });
+</script>
 
 {%endblock%}
