@@ -15,10 +15,9 @@
         <p>Description: {{ pet.description }}</p>
         <p>Age: {{ pet.age }}</p>
     </div>
-
-    <div>
+<div>
         {% load static %} 
-        <img width="100px" height="100px" src="{% static pet.image|cut:'main_app/static' %}"/>
+    <img width="100px" height="100px" src="{% static pet.image|cut:'main_app/static' %}"/>
     </div>
     </div>
 </div>
