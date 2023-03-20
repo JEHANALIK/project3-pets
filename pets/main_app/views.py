@@ -11,18 +11,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 
-
-# IMPORT FORMS 
-from .forms import AppointmentsForm , PetsForm
-
 # IMPORT FORMS
 from .forms import AppointmentsForm
 from django.contrib.auth.decorators import login_required
 from .forms import UpdateUserForm, UpdateProfileForm
 
-# from django.contrib.auth.decorators import login_required
-
-# from django.contrib.auth.mixins import LoginRequiredMixin 
 
 # Create your views here.
 def home(request):
