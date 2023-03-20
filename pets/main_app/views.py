@@ -7,6 +7,9 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
+# IMPORT FORMS
+from .forms import AppointmentsForm , PetsForm
+
 
 # from django.contrib.auth.decorators import login_required
 
@@ -24,6 +27,7 @@ def services_detail(request, service_id):
 # create appointments
 class AppointmentsCreate(CreateView):
     model= Appointments
+    # form_class= AppointmentsForm
     fields= ['time', 'date']
 
 
@@ -100,7 +104,8 @@ def pets_detail(request, pet_id):
 # create pets
 class PetsCreate(CreateView):
     model= Pets
-    fields= ['name', 'type', 'breed', 'description', 'age', 'image']
+    form_class = PetsForm
+    # fields= ['name', 'type', 'breed', 'description', 'age', 'image']
 
     def form_valid(self, form):
         form.instance.user = self.request.user

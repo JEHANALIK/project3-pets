@@ -2,48 +2,26 @@
 {% block content %}
 {%load static%}
 
-<!-- <form action="" method="post">
-    <h1>Book an Appointment</h1>
-    {%csrf_token%}
-    <table>
-        {{form.as_table}}
-    </table>
-    <input type="submit" value="Book!" class="btn">
-</form> -->
 <form action="" method="post">
-    {%csrf_token%}
-<div class="mb-3">
+  {%csrf_token%}
+  <div class="mb-3 appointment-form">
     {{form.as_table}}
-    {% comment %} <label for="exampleFormControlInput1" class="form-label">Date</label>
-    <input type="date" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Time:</label>
-    <input type="time" class="form-control" id="exampleFormControlInput1">
-  </div> {% endcomment %}
+    
+  <select class="form-select " aria-label="Default select example" id="pets" name="pets">
+      <option selected>Select a Pet</option>
+      {%for x in pets%}
+       <option value="{{x.id}}">{{x}}</option>
+      {%endfor%}
+  </select>
 
-  {% comment %} pet value {% endcomment %}
-  {% comment %} {% for pet in context%}
-  {{pet['pets']}}
-{% endfor %} {% endcomment %}
-
-
-
-
-<label for="pets">Choose a pet:</label>
-<select id="pets" name="pets">
-  {%for x in pets%}
-  <option value="{{x.id}}">{{x}}</option>
-  {%endfor%}
-</select>
-
-<select id="services" name="services">
-  {%for service in services_list%}
-  <option value="{{service.id}}">{{service.name}}</option>
-  {%endfor%}
-</select>
+  <select class="form-select " aria-label="Default select example" id="services" name="services">
+    <option selected>Select a Service</option>
+    {%for service in services_list%}
+    <option value="{{service.id}}">{{service.name}}</option>
+    {%endfor%}
+  </select>
 
   <input type="submit" value="Book!" class="btn btn-primary">
+ </div>
 </form>
-
 {%endblock%}
