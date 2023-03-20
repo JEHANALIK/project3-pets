@@ -1,10 +1,13 @@
-from django.forms import ModelForm
-from .models import Appointments , Pets , User, Service
+
 from django import forms
+from django.forms import ModelForm
+from django.contrib.auth.models import User
+from .models import Appointments, Profile
 
 class AppointmentsForm(forms.ModelForm):
     class Meta:
         model = Appointments
+
         fields = ['date', 'time']
 
         widgets= {
@@ -12,19 +15,28 @@ class AppointmentsForm(forms.ModelForm):
             'time': forms.TimeInput(attrs={'class': 'form-control'}),
         }
 
-class PetsForm(forms.ModelForm):
+
+    # def __init__(self, *args, **kwargs):
+    #    user = kwargs.pop('user')
+    #    super(AppointmentsForm, self).__init__(*args, **kwargs)
+    #    self.fields['pets'].queryset = Appointments.objects.filter(user=user)
+
+# Update user and profile info
+class UpdateUserForm(forms.ModelForm):
+    username = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+
     class Meta:
-        model: Pets
-        fields = ['name','type','breed','age','description']
-
-        widgets = {
-            'name': forms.TextInput(attrs={'class':'form-control'}),
-            'type': forms.Select(attrs={'class':'form-control'}),
-            'breed': forms.TextInput(attrs={'class':'form-control'}),
-            'age': forms.NumberInput(attrs={'class':'form-control'}),
-            'description': forms.Textarea(attrs={'class':'form-control'}),
-        }
-
-    
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']
 
 
+class UpdateProfileForm(forms.ModelForm):
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+
+    class Meta:
+        model = Profile
+        fields = ['phone']
