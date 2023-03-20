@@ -14,7 +14,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 
 # IMPORT FORMS
-from .forms import AppointmentsForm , PetsForm
+from .forms import AppointmentsForm
 from django.contrib.auth.decorators import login_required
 from .forms import UpdateUserForm, UpdateProfileForm
 
