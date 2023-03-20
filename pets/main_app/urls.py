@@ -19,7 +19,7 @@ urlpatterns = [
 
     path('accounts/signup/', views.signup, name='signup'),
 
-    # path('profile', us)
+    path('profile/', views.profile, name='users-profile'),
 
     # Change Password
     path('change-password/', auth_views.PasswordChangeView.as_view(template_name = 'registration/change-password.html', success_url = '/'), name='change_password')
