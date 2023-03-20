@@ -6,6 +6,33 @@
   {%csrf_token%}
   <div class="mb-3 appointment-form">
     {{form.as_table}}
+<<<<<<< HEAD
+    {% comment %} <label for="exampleFormControlInput1" class="form-label">Date</label>
+    <input type="date" class="form-control" id="exampleFormControlInput1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Time:</label>
+    <input type="time" class="form-control" id="exampleFormControlInput1">
+  </div> {% endcomment %}
+
+  {% comment %} pet value {% endcomment %}
+  {% comment %} {% for pet in context%}
+  {{pet['pets']}}
+{% endfor %} {% endcomment %}
+
+<label for="pets">Choose a pet:</label>
+<select id="pets" name="pets">
+  {%for x in pets%}
+  <option value="{{x.id}}">{{x}}</option>
+  {%endfor%}
+</select>
+
+<select id="services" name="services">
+  {%for service in services_list%}
+  <option value="{{service.id}}">{{service.name}}</option>
+  {%endfor%}
+</select>
+=======
     
   <select class="form-select " aria-label="Default select example" id="pets" name="pets">
       <option selected>Select a Pet</option>
@@ -20,8 +47,19 @@
     <option value="{{service.id}}">{{service.name}}</option>
     {%endfor%}
   </select>
+>>>>>>> 76b160cc864fd95481a4c65df1afa30197f37beb
 
   <input type="submit" value="Book!" class="btn btn-primary">
  </div>
 </form>
+<<<<<<< HEAD
+
+<script>
+  $(document).ready(function(){
+      $('.datepicker').datepicker();
+  });
+</script>
+
+=======
+>>>>>>> 76b160cc864fd95481a4c65df1afa30197f37beb
 {%endblock%}
