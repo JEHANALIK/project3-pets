@@ -7,10 +7,10 @@
   <div class="col s12">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ appointment.date }}</span>
-        <p>time: {{ appointment.time }}</p>
-        <p>pet: {{ appointment.pets }}</p>
-        <p>service: {{ appointment.service.name }}</p>
+        <span class="card-title">Date: {{ appointment.date }}</span>
+        <p>Time: {{ appointment.time }}</p>
+        <p>Pet: {{ appointment.pets }}</p>
+        <p>Service: {{ appointment.service.name }}</p>
       </div>
       <a href="{% url 'appointments_delete' appointment.id %}" class="btn btn-primary">Cancel Appointment</a>
       </div>

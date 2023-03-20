@@ -5,8 +5,8 @@
 <div class="card mb-4">
     <h5 class="card-header">Service: {{appointment.service.name}}</h5>
     <div class="card-body">
-      <h5 class="card-title">Date:{{appointment.date}}</h5>
-      <p class="card-text">Time:{{appointment.time}}</p>
+      <h5 class="card-title">Date: {{appointment.date}}</h5>
+      <p class="card-text">Time: {{appointment.time}}</p>
       <a href="{% url 'appointments_detail' appointment.id %}" class="btn btn-primary">appointment detail</a>
     </div>
   </div>

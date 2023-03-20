@@ -7,6 +7,13 @@ from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
+
+
+# IMPORT FORMS
+from .forms import AppointmentsForm , PetsForm
 from django.contrib.auth.decorators import login_required
 from .forms import UpdateUserForm, UpdateProfileForm
 
@@ -23,15 +30,16 @@ def services_detail(request, service_id):
     service = Service.objects.get(id = service_id)
     return render(request, 'services/detail.html', {'service' : service})
 
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'registration/change-password.html'
+    success_message = "Successfully Changed Your Password!"
+    success_url = reverse_lazy('change_password')
+
 # create appointments
 class AppointmentsCreate(CreateView):
     model= Appointments
+    # form_class= AppointmentsForm
     fields= ['time', 'date']
-
-
-
-    
-
     # def get_form(self, *args, **kwargs):
     #     print('saad')
     #     form = super(AppointmentsCreate, self).get_form(*args, **kwargs)
@@ -102,7 +110,8 @@ def pets_detail(request, pet_id):
 # create pets
 class PetsCreate(CreateView):
     model= Pets
-    fields= ['name', 'type', 'breed', 'description', 'age', 'image']
+    form_class = PetsForm
+    # fields= ['name', 'type', 'breed', 'description', 'age', 'image']
 
     def form_valid(self, form):
         form.instance.user = self.request.user

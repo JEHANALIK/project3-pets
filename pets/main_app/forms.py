@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from .models import Appointments, Profile
 
-class AppointmentsForm(ModelForm):
+class AppointmentsForm(forms.ModelForm):
     class Meta:
         model = Appointments
         fields = ['date', 'time', 'pets']
