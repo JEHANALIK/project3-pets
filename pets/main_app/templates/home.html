@@ -1,57 +1,119 @@
 {% extends 'base.html' %}
 {% block content %}
 {%load static%}
-
-<div class="first">
-    <div class="card mb-3 ">
-        <div class="row g-0">
-          <div class="col-md-8">
-            <div class="card-body">
-              <h1 class="card-title first-title">A family of Vets,<br>Caring For Your Pets</h1>
-              <p class="card-text first-p">Welcome to </p>
-            </div>
-          </div>
-            <div class="col-md-4 first-image">
-              <img class="first-image1 " src="{% static 'images/first-image1.jpg'%}"  alt="...">
-              <img class="first-image2" src="{% static 'images/first-image2.jpg'%}"   alt="...">
-              <img class="first-image3" src="{% static 'images/first-image33copy.jpg'%}"  alt="...">
-              <img class="first-image4" src="{% static 'images/first-image5.jpg'%}" alt="...">  
-          </div>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+<!-- <div class="card mb-3 " style="max-width: auto;">
+  <div class="row align-items-center">
+    <div class="col-md-8 mx-auto">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <img src="{% static 'images/first.png'%}" class="img-fluid rounded-start" alt="...">
     </div>
   </div>
 </div>
 
-<div class="second">
-    <div class="card mb-3 mt-3 second " style="max-width: 200vh;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img class="second-image" src="{% static 'images/second-image.jpg'%}" class="img-fluid rounded-start" alt="...">
-              </div>
-          <div class="col-md-8 ">
-            <div class="card-body">
-              <h1 class="card-title second-title">Card title</h1>
-              <p class="card-text second-p">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-          
-        </div>
+<div class="card mb-3" style="max-width: auto;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'images/second-image.jpg'%}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
+    </div>
+  </div>
 </div>
+
 
 <h1>Our Services</h1>
 <hr>
-    <div class="row">
-      {% for service in services%}
-      <div class="col-sm-6 col-md-6 col-lg-3">
-        <div class="card">
-          <img src="{% static service.image|cut:'main_app/static'%}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title" style="text-align: center;">{{service.name}}</h5>
-            <a href="{% url 'detail' service.id %}" class="btn">Read More</a>
-          </div>
-        </div>
-      </div>
-      {%endfor%}
+<div class="row mb-4" style="max-width: auto;">
+  <div class="card-group"></div>
+  {% for service in services%}
+  <div class="col-lg-3 col-md-6 col-sm-6 ">
+  <div class="card" >
+    <img src="{% static service.image|cut:'main_app/static'%}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{service.name}}</h5>
     </div>
+    <div class="card-text">
+      <a href="{% url 'detail' service.id %}" class="btn d-flex center">Go somewhere</a>
+    </div>
+  </div>
+</div>
+{%endfor%}
+</div>
+</div> -->
+
+ <!-- Page Header -->
+ <header class="header" id="home">
+  <div class="container">
+      <div class="infos">
+          <h6 class="subtitle">WELCOME TO</h6>
+          <h6 class="title">HOUSE OF PAWS</h6>
+          <p>vet</p>
+      </div>              
+      <div class="img-holder">
+          <img src="{% static 'images/first.png'%}" alt="">
+      </div>      
+  </div>  
+
+
+    <!-- About section -->
+    <section id="about" class="section ">
+      <div class="container mt-5">
+          <div class="row text-center text-md-left">
+              <div class="col-md-3">
+                  <img src="{% static 'images/second-image.jpg'%}" alt="" class="img-thumbnail mb-4">
+              </div>
+              <div class="pl-md-4 col-md-9">
+                  <h6 class="title">James Smith</h6>
+                  <p class="subtitle">UI/UX Designer</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, pariatur, aperiam aut autem voluptas odit. Odio ducimus delectus totam sed aliquam sequi praesentium mollitia, illum repudiandae quidem quod, magni magnam.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eius, nam. Quo praesentium qui temporibus voluptatum, facilis aliquid eligendi fugiat beatae neque inventore non. Laborum repellendus consequatur ullam voluptatum asperiores.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+    <!-- Service section -->
+    <section id="service" class="service">
+      <div class="service text-center">
+          <h6 class="service-subtitle">Service</h6>
+          <h6 class="service-title mb-4">What We Do</h6>
+          <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>
+      </div> 
+    
+
+          <div class="row mx-auto">
+            {% for service in services%}
+              <div class="col-sm-6 col-md-3 mb-4">
+                  <div class="custom-card card border">
+                      <div class="card-body">
+                          <i class="icon ti-crown"></i>
+                          <h5><a href="{% url 'detail' service.id %}">{{service.name}}</a></h5>
+                      </div>
+                  </div>
+              </div>
+              {%endfor%}
+          </div>
+        </section>
+  <!-- End of Sectoin -->
+
+
+  
+   
+
+</body>
+    
+
+
 
 {% endblock %}
