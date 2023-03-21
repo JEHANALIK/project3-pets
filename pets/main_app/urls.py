@@ -22,5 +22,7 @@ urlpatterns = [
     path('profile/', views.profile, name='users-profile'),
 
     # Change Password
-    path('change-password/', auth_views.PasswordChangeView.as_view(template_name = 'registration/change-password.html'), name='change_password')
+    path('change-password/', auth_views.PasswordChangeView.as_view(template_name = 'registration/change-password.html'), name='change_password'),
+
+    path('services/<int:service_id>/add_review', views.add_review, name='add_review'),
 ]

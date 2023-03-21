@@ -38,5 +38,17 @@
     {%endfor%}
 </div>
 
+{% for review in review %}
+
+{{ review.user.first_name }} : {{ review.review }}
+
+{% endfor %}
+
+<form action="{% url 'add_review' service.id %}" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" class="btn" value="Add Review">
+</form>
+
 {% endblock %}
 

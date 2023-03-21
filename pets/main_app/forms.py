@@ -2,7 +2,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
-from .models import Appointments, Profile
+from .models import Appointments, Profile, Reviews
 
 class AppointmentsForm(forms.ModelForm):
     class Meta:
@@ -40,3 +40,10 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['phone']
+
+class ReviewForm(forms.ModelForm):
+    review = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = Reviews
+        fields = ['review']
