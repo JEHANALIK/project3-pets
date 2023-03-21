@@ -145,8 +145,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, "You have successfully signed up!!")
-            return redirect('/')
+            return redirect('users-profile')
         else:
             messages.error(request, 'Invalid sign up - try again')
     form = UserCreationForm()
