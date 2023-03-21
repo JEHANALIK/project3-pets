@@ -28,14 +28,17 @@ def services_detail(request, service_id):
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'registration/change-password.html'
+    success_url = reverse_lazy('users-profile')
     success_message = "Successfully Changed Your Password!"
-    success_url = reverse_lazy('change_password')
+    
 
 # create appointments
-class AppointmentsCreate(CreateView):
+class AppointmentsCreate(SuccessMessageMixin, CreateView):
     model= Appointments
     # form_class= AppointmentsForm
     fields= ['time', 'date']
+    success_url = reverse_lazy('appointments_create')
+    success_message = "Your appointment is successfully created!"
     # def get_form(self, *args, **kwargs):
     #     print('saad')
     #     form = super(AppointmentsCreate, self).get_form(*args, **kwargs)
@@ -92,7 +95,8 @@ def appointments_detail(request , appointment_id):
 # delete appointments
 class AppointmentsDelete(DeleteView):
     model = Appointments
-    success_url= '/myAppointments/'
+    success_url = reverse_lazy('my_appointments')
+    success_message = "Your appointment is successfully deleted!"
 
 def pets_index(request):
     pets = Pets.objects.filter(user=request.user)
@@ -104,10 +108,13 @@ def pets_detail(request, pet_id):
 
 
 # create pets
-class PetsCreate(CreateView):
+class PetsCreate(SuccessMessageMixin, CreateView):
     model= Pets
     # form_class = PetsForm
     fields= ['name', 'type', 'breed', 'description', 'age', 'image']
+    success_url = reverse_lazy('pets_create')
+    success_message = "Pet successfully created!"
+
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -121,25 +128,29 @@ def my_pets(request):
 # delete pets
 class PetsDelete(DeleteView):
     model = Pets
-    success_url= '/pets/'
+    # success_url= '/pets/'
+    success_url = reverse_lazy('pets_index')
+    success_message = "Pet successfully deleted!"
 
 # update pets
 class PetsUpdate(UpdateView):
     model = Pets
     fields = ['name', 'type', 'breed', 'description', 'age', 'image']
+    success_url = reverse_lazy('pets_detail')
+    success_message = "Pet successfully updated!"
 
 def signup(request):
-    error_message = ''
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, "You have successfully signed up!!")
             return redirect('/')
         else:
-            error_message = 'Invalid sign up - try again'
+            messages.error(request, 'Invalid sign up - try again')
     form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
+    context = {'form': form}
     return render(request, 'registration/signup.html', context)
 
 @login_required
