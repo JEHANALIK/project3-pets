@@ -22,6 +22,11 @@ class Service(models.Model):
     price= models.FloatField()
     image= models.ImageField(upload_to='main_app/static/uploads', blank=True)
 
+class Reviews(models.Model):
+    review = models.TextField(max_length=250)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+
 TYPES = (
     ('C', 'Cat'),
     ('D', 'Dog')
@@ -67,4 +72,3 @@ class Appointments(models.Model):
 
     def get_absolute_url(self):
         return reverse("appointments_detail", kwargs={"appointment_id": self.id})
-
