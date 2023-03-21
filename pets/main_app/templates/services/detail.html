@@ -22,5 +22,21 @@
     </div>
 </div>
 
+<h2>Other Services</h2>
+<hr>
+<div class="row">
+    {% for service in rest_service%}
+    <div class="col-sm-6 col-md-6 col-lg-3">
+      <div class="card">
+        <img src="{% static service.image|cut:'main_app/static'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">{{service.name}}</h5>
+          <a href="{% url 'detail' service.id %}" class="btn">Read More</a>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+</div>
+
 {% endblock %}
 

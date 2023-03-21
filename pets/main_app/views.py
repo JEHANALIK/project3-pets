@@ -24,7 +24,8 @@ def home(request):
 
 def services_detail(request, service_id):
     service = Service.objects.get(id = service_id)
-    return render(request, 'services/detail.html', {'service' : service})
+    rest_service = Service.objects.exclude(id = service_id)
+    return render(request, 'services/detail.html', {'service' : service, 'rest_service' : rest_service})
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'registration/change-password.html'
