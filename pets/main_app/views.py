@@ -1,7 +1,7 @@
 import logging
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Service , Appointments, Pets
+from .models import Service , Appointments, Pets, Reviews
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
@@ -12,7 +12,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 
 # IMPORT FORMS
-from .forms import AppointmentsForm
+from .forms import AppointmentsForm, ReviewForm
 from django.contrib.auth.decorators import login_required
 from .forms import UpdateUserForm, UpdateProfileForm
 
@@ -25,7 +25,9 @@ def home(request):
 def services_detail(request, service_id):
     service = Service.objects.get(id = service_id)
     rest_service = Service.objects.exclude(id = service_id)
-    return render(request, 'services/detail.html', {'service' : service, 'rest_service' : rest_service})
+    review = Reviews.objects.filter(id = service_id)
+    form = ReviewForm()
+    return render(request, 'services/detail.html', {'service' : service, 'rest_service' : rest_service, 'review': review, 'form': form})
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'registration/change-password.html'
@@ -170,3 +172,13 @@ def profile(request):
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)
     return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
+def add_review(request, service_id):
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.service_id = service_id
+        new_review.user = request.user
+        new_review.save()
+        print(new_review)
+    return redirect('detail', service_id=service_id)
