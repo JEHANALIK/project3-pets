@@ -65,5 +65,11 @@
 </section>
 </form>
 
+{% for review in review %}
+
+{{ review.user.first_name }} : {{ review.review }}
+
+{% endfor %}
+
 {% endblock %}
 
