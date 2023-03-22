@@ -30,10 +30,10 @@ def services_detail(request, service_id):
     form = ReviewForm()
     return render(request, 'services/detail.html', {'service' : service, 'rest_service' : rest_service, 'review': review, 'form': form})
 
-class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
-    template_name = 'registration/change-password.html'
-    success_url = reverse_lazy('users-profile')
-    success_message = "You Have Successfully Changed Your Password!"
+# class PasswordChangeView(SuccessMessageMixin, PasswordChangeView):
+#     template_name = 'registration/change-password.html'
+#     success_url = reverse_lazy('users-profile')
+#     success_message = "You Have Successfully Changed Your Password!"
     
 
 # create appointments

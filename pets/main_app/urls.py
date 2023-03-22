@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 
 urlpatterns = [
     #R outes in express , urls in django
@@ -22,7 +23,7 @@ urlpatterns = [
     path('profile/', views.profile, name='users-profile'),
 
     # Change Password
-    path('change-password/', auth_views.PasswordChangeView.as_view(template_name = 'registration/change-password.html'), name='change_password'),
+    path('change-password/', auth_views.PasswordChangeView.as_view(template_name = 'registration/change-password.html', success_url = reverse_lazy('users-profile')), name='change_password'),
 
     path('services/<int:service_id>/add_review', views.add_review, name='add_review'),
 ]
