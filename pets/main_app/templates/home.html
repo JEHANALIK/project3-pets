@@ -2,9 +2,13 @@
 {% block content %}
 {%load static%}
 
-
-
  <!-- Page Header -->
+ {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}  m-4" id="msg" role="alert" style='text-align: center;'>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
  <header class="header" id="home">
   <div class="container">
       <div class="infos">
@@ -16,7 +20,6 @@
           <img src="{% static 'images/first1.png'%}" alt="">
       </div>      
   </div>  
-
 
     <!-- About section -->
     <section id="about" class="section ">
@@ -57,14 +60,6 @@
           </div>
         </section>
   <!-- End of Sectoin -->
-
-
-  
-   
-
 </body>
-    
-
-
 
 {% endblock %}

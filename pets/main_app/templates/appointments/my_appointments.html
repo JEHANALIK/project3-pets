@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}  m-4" id="msg" role="alert" style='text-align: center;'>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
   <section class="bg-gray p-0 section">
     <div class="container">
       <div class="d-flex justify-content-between p-5 service text-center">
