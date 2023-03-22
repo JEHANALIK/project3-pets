@@ -17,7 +17,7 @@
           <p>vet</p>
       </div>              
       <div class="img-holder">
-          <img src="{% static 'images/first.png'%}" alt="">
+          <img src="{% static 'images/first1.png'%}" alt="">
       </div>      
   </div>  
 
@@ -47,12 +47,11 @@
       </div> 
     
 
-          <div class="row mx-auto">
+          <div class="row mx-4">
             {% for service in services%}
               <div class="col-sm-6 col-md-3 mb-4">
                   <div class="custom-card card border">
                       <div class="card-body">
-                          <i class="icon ti-crown"></i>
                           <h5><a href="{% url 'detail' service.id %}">{{service.name}}</a></h5>
                       </div>
                   </div>
