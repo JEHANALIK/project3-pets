@@ -55,13 +55,19 @@
   {{ form|crispy }}
   <input type="submit" value="Add Review" class="btn btn-primary mt-5">
 </section>
-</form>
 
 {% for review in review %}
-
-{{ review.user.first_name }}: {{ review.review }} <br>
+<div class="card w-90">
+    <div class="card-header">
+        {{ review.user.first_name }}
+    </div>
+    <div class="card-body">
+    <p class="card-text">{{ review.review }}</p>
+    </div>
+</div>
+  <br>
 
 {% endfor %}
+</form>
 
 {% endblock %}
-
