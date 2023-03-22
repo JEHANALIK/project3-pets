@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
 
@@ -49,11 +51,12 @@
 {{ rev.user.first_name }} : {{ rev.review }}
 
 {% endfor %}
-<form action="{% url 'add_review' service.id %}" method="POST">
+
+<form action="{% url 'add_review' service.id %}" method="POST" class="card p-5 mt-5">
     <section id="about" class="section ">
   {% csrf_token %}
-  {{form.as_table}}
-  <input type="submit" class="btn" value="Add Review">
+  {{form|crispy}}
+  <input type="submit" value="Add Review" class="btn btn-primary mt-5">
 </section>
 </form>
 
