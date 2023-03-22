@@ -3,6 +3,12 @@
 
 <h1>My Pets</h1>
 
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}  m-4" id="msg" role="alert" style='text-align: center;'>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
 {% for pet in pets %}
 <div class="card">
     <a href="{% url 'pets_detail' pet.id %}">
