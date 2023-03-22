@@ -3,14 +3,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-<h1 style="text-align: center;">Book Appointment</h1>
-
-
-<form action="" class="card p-5 mt-5" method="post">
+<form action="" class="card w-50 p-3 mx-auto" style="font-size: 10px;" method="post">
+  <h2 style="text-align: center;">Book Appointment</h2>
   {%csrf_token%}
-  
     {{form|crispy}}
-    
   <select class="form-select " aria-label="Default select example" id="pets" name="pets">
       <option selected>Select a Pet</option>
       {%for x in pets%}
@@ -25,7 +21,7 @@
     {%endfor%}
   </select>
 
-  <input type="submit" value="Book!" class="btn btn-primary mt-5">
+  <input type="submit" value="Book!" class="btn btn-primary mt-2">
  
 </form>
 
