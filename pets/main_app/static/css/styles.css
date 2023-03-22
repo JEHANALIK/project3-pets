@@ -5,7 +5,12 @@
 #app-detail{
   padding-top: 100px;
 }
-
+.card-body #color {
+  color: #76C2D9;
+}
+#color:hover{
+  color: #001F3F;
+}
 
 html {
   font-family: sans-serif;
@@ -88,7 +93,7 @@ a {
 }
 
 a:hover {
-  color: #76C2D9;
+  color: #ffffff;
   text-decoration: underline;
   text-decoration: none;
 }
@@ -2535,11 +2540,6 @@ fieldset:disabled a.btn {
   color: #212529;
   background-color: #76C2D9;
   border-color: #76C2D9;
-}
-
-#delete-btn
-{
-  
 }
 
 .btn-primary:hover {
