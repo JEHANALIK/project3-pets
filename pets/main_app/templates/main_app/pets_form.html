@@ -2,20 +2,24 @@
 {% block content %}
 {%load static%}
 {% load crispy_forms_tags %}
+
 {% if object %}
 <h1>Edit <span>{{object.name}}</span></h1>
 {% else %}
-<h1>Add Pet</h1>
+<h1 style="text-align: center;">Add Pet</h1>
 {%endif%}
 
     <form action="" method="post" class="card p-5 mt-5" enctype="multipart/form-data">
     {%csrf_token%}
-    <table style="width: 500px;">
+    <table>
         {{form|crispy}}
     </table>
-    <input type="submit" value="submit" class="btn btn-primary mt-5">
+    {% if object %}
+    <input type="submit" value="Edit Pet" class="btn btn-primary mt-5">
+    {% else %}
+    <input type="submit" value="Add Pet" class="btn btn-primary mt-5">
+    {% endif %}
     </form>
-
 
 <script>
      const typeElement = document.getElementById('id_type')
