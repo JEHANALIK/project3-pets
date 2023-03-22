@@ -4,39 +4,49 @@
 
 {% load static %}
 
-<h1>{{ service.name }} details </h1>
+{% comment %} <h1>{{ service.name }} details </h1> {% endcomment %}
 
-<div class="card">
-    <div class="card-body">
-        <div class="card-content">
-            <div class="card-title">
-                {{ service.name }} 
+
+
+<section id="about" class="section ">
+  <div class="container mt-5">
+      <div class="row text-center text-md-left">
+          <div class="col-md-3">
+              <img src="{% static service.image|cut:'main_app/static'%}" alt="" class="img-thumbnail mb-4">
+          </div>
+          <div class="pl-md-4 col-md-9">
+              <h6 class="title">{{ service.name }} details </h6>
+              <p class="subtitle"></p>
+              <p>Description: {{ service.description }}</p>
+              <p>Price: {{ service.price }}</p>
+              <a class='- btn btn-primary rounded ml-4' href="{% url 'appointments_create' %}">Book an appointment</a>          
             </div>
-            <p>Description: {{ service.description }}</p>
-            <p>Price: {{ service.price }}</p>
-            <img src="{% static 'images/first-image.jpg'%}" alt="">
-        </div>
-        <div class="card-action">
-            <a href="{% url 'appointments_create' %}">Book an appointment</a>
-        </div>
-    </div>
-</div>
-
-<h2>Other Services</h2>
-<hr>
-<div class="row">
-    {% for service in rest_service%}
-    <div class="col-sm-6 col-md-6 col-lg-3">
-      <div class="card">
-        <img src="{% static service.image|cut:'main_app/static'%}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">{{service.name}}</h5>
-          <a href="{% url 'detail' service.id %}" class="btn">Read More</a>
-        </div>
       </div>
-    </div>
-    {%endfor%}
-</div>
+  </div>
+</section>
+
+
+<section id="service" class="service">
+    <div class="service text-center">
+        <h6 class="service-subtitle">Other Service</h6>
+        <p class="mb-4 pb-3"></p>
+
+    </div> 
+
+<div class="row mx-auto">
+            {% for service in rest_service%}
+              <div class="col-sm-6 col-md-3 mb-4 mx-auto">
+                  <div class="custom-card card border">
+                      <div class="card-body">
+                          <i class="icon ti-crown"></i>
+                          <h5><a href="{% url 'detail' service.id %}">{{service.name}}</a></h5>
+                      </div>
+                  </div>
+              </div>
+              {%endfor%}
+          </div>
+</section>
+
 
 {% comment %} getting reviews {% endcomment %}
 
@@ -44,12 +54,15 @@
 
 {{ rev.user.first_name }} : {{ rev.review }}
 
-{% endfor %}
 
+
+{% endfor %}
 <form action="{% url 'add_review' service.id %}" method="POST">
+    <section id="about" class="section ">
   {% csrf_token %}
-  {{form.as_p}}
+  {{form.as_table}}
   <input type="submit" class="btn" value="Add Review">
+</section>
 </form>
 
 {% endblock %}
