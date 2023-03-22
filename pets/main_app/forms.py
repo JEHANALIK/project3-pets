@@ -42,7 +42,7 @@ class UpdateProfileForm(forms.ModelForm):
         fields = ['phone']
 
 class ReviewForm(forms.ModelForm):
-    review = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    review = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Reviews

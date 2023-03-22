@@ -5,12 +5,6 @@
 #app-detail{
   padding-top: 100px;
 }
-.card-body #color {
-  color: #76C2D9;
-}
-#color:hover{
-  color: #001F3F;
-}
 
 html {
   font-family: sans-serif;
@@ -11192,6 +11186,10 @@ pre {
 
 .page-footer {
   background: #fcfdff;
+  
+  /* margin-bottom: -6vh;
+  margin-top: auto;
+  bottom: 0; */
 }
 
 .page-footer .row {
