@@ -4,18 +4,18 @@
 
 {% if messages %}
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}  m-4" id="msg" role="alert" style='text-align: center;'>{{ message }}</div>
+    <div class="alert alert-{{ message.tags }}  m-5" id="msg" role="alert" style='text-align: center;'>{{ message }}</div>
     {% endfor %}
 {% endif %}
 
-  <section id="blog" class="section">
+  <section id="blog" class="section" style="margin-top: -10vh">
     <div class="container text-center">
         
         <div class="d-flex justify-content-between p-5 service text-center">
             <h1 class="service-subtitle">My Pets</h1>
-            <p class="mb-5 pb-4"></p>
+            <p class="mb-2 pb-4"></p>
             <div class="app-btn">
-              <a class="- btn btn-primary rounded ml-4" href="{% url 'appointments_create' %}">Add Pets</a>
+              <a class="- btn btn-primary rounded ml-4" href="{% url 'pets_create' %}">Add Pets</a>
             </div>
         </div>
         <div class="row ">
