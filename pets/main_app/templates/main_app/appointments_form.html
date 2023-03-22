@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-{%load static%}
+{% load static %}
+{% load crispy_forms_tags %}
 
-<form action="" method="post">
+<form action="" class="card w-50 p-3 mx-auto" style="font-size: 10px;" method="post">
+  <h2 style="text-align: center;">Book Appointment</h2>
   {%csrf_token%}
-  <div class="mb-3 appointment-form">
-    {{form.as_table}}
-    
+    {{form|crispy}}
   <select class="form-select " aria-label="Default select example" id="pets" name="pets">
       <option selected>Select a Pet</option>
       {%for x in pets%}
        <option value="{{x.id}}">{{x}}</option>
       {%endfor%}
   </select>
-
+  <br>
   <select class="form-select " aria-label="Default select example" id="services" name="services">
     <option selected>Select a Service</option>
     {%for service in services_list%}
@@ -21,8 +21,8 @@
     {%endfor%}
   </select>
 
-  <input type="submit" value="Book!" class="btn btn-primary">
- </div>
+  <input type="submit" value="Book!" class="btn btn-primary mt-2">
+ 
 </form>
 
 <script>

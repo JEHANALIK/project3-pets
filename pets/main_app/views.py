@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 
 # IMPORT FORMS
 from .forms import AppointmentsForm, ReviewForm
@@ -32,7 +33,7 @@ def services_detail(request, service_id):
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'registration/change-password.html'
     success_url = reverse_lazy('users-profile')
-    success_message = "Successfully Changed Your Password!"
+    success_message = "You Have Successfully Changed Your Password!"
     
 
 # create appointments
@@ -40,8 +41,8 @@ class AppointmentsCreate(SuccessMessageMixin, CreateView):
     model= Appointments
     # form_class= AppointmentsForm
     fields= ['time', 'date']
-    success_url = reverse_lazy('appointments_create')
-    success_message = "Your appointment is successfully created!"
+    success_url = reverse_lazy('my_appointments')
+    success_message = "You Have Successfully Booked Your Appointmnet!"
     # def get_form(self, *args, **kwargs):
     #     print('saad')
     #     form = super(AppointmentsCreate, self).get_form(*args, **kwargs)
@@ -66,7 +67,13 @@ class AppointmentsCreate(SuccessMessageMixin, CreateView):
     #     s = self.request.service
     #     s["services"] = s.services_set.all()
     #     # print("context", context)
-    #     return s       
+    #     return s
+    
+    def get_form(self, form_class=None):
+        form = super(AppointmentsCreate, self).get_form(form_class)
+        form.fields['time'].widget = AdminTimeWidget(attrs={'type': 'time'})
+        form.fields['date'].widget = AdminDateWidget(attrs={'type': 'date'})
+        return form      
     
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -115,8 +122,8 @@ class PetsCreate(SuccessMessageMixin, CreateView):
     model= Pets
     # form_class = PetsForm
     fields= ['name', 'type', 'breed', 'description', 'age', 'image']
-    success_url = reverse_lazy('pets_create')
-    success_message = "Pet successfully created!"
+    success_url = reverse_lazy('pets_index')
+    success_message = "You Have Successfully Created Your Pet!"
 
 
     def form_valid(self, form):
@@ -139,8 +146,8 @@ class PetsDelete(DeleteView):
 class PetsUpdate(UpdateView):
     model = Pets
     fields = ['name', 'type', 'breed', 'description', 'age', 'image']
-    success_url = reverse_lazy('pets_detail')
-    success_message = "Pet successfully updated!"
+    success_url = reverse_lazy('pets_index')
+    success_message = "You Have Successfully Created Your Pet!"
 
 def signup(request):
     if request.method == 'POST':
@@ -148,7 +155,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, 'You have successfully signed up!!!')
+            messages.success(request, 'You Have Successfully Signed Up!')
             return redirect('users-profile')
         else:
             messages.error(request, 'Invalid sign up - try again')
@@ -166,7 +173,7 @@ def profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile is updated sucessfully!')
-            return redirect(to='users-profile')
+            return redirect('users-profile')
         else:
             messages.error(request, 'An error occured!')
     else:

@@ -2,21 +2,24 @@
 {% block content %}
 {%load static%}
 
-
-
  <!-- Page Header -->
+ {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}  m-4" id="msg" role="alert" style='text-align: center;'>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
  <header class="header" id="home">
   <div class="container">
       <div class="infos">
           <h6 class="subtitle">WELCOME TO</h6>
           <h6 class="title">HOUSE OF PAWS</h6>
-          <p>vet</p>
+          <p>Where pets are treated like family</p>
       </div>              
       <div class="img-holder">
-          <img src="{% static 'images/first.png'%}" alt="">
+          <img src="{% static 'images/first1.png'%}" alt="">
       </div>      
   </div>  
-
 
     <!-- About section -->
     <section id="about" class="section ">
@@ -26,10 +29,10 @@
                   <img src="{% static 'images/second-image.jpg'%}" alt="" class="img-thumbnail mb-4">
               </div>
               <div class="pl-md-4 col-md-9">
-                  <h6 class="title">James Smith</h6>
-                  <p class="subtitle">UI/UX Designer</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, pariatur, aperiam aut autem voluptas odit. Odio ducimus delectus totam sed aliquam sequi praesentium mollitia, illum repudiandae quidem quod, magni magnam.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eius, nam. Quo praesentium qui temporibus voluptatum, facilis aliquid eligendi fugiat beatae neque inventore non. Laborum repellendus consequatur ullam voluptatum asperiores.</p>
+                  <h6 class="title">House OF Paws</h6>
+                  <p class="subtitle">About Us</p>
+                  <p> House Of Paws is a premier veterinary clinic dedicated to providing top-notch care for pets of all kinds. Our team of experienced veterinarians and staff are passionate about animals and committed to delivering the best possible care to your furry friends.</p>
+                  <p>We understand that pets are an important part of your family, and we strive to treat every pet that comes through our doors with the love and respect they deserve. Our state-of-the-art facility is equipped with the latest technology and equipment to ensure that your pet receives the most advanced medical treatments available.</p>
               </div>
           </div>
       </div>
@@ -40,17 +43,16 @@
       <div class="service text-center">
           <h6 class="service-subtitle">Service</h6>
           <h6 class="service-title mb-4">What We Do</h6>
-          <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>
+          <p class="mb-5 pb-4">At House Of Paws, we offer a wide range of veterinary services, including routine check-ups, <br/> vaccinations, surgery, and comsoltations..</p>
       </div> 
     
 
-          <div class="row mx-auto">
+          <div class="row mx-4">
             {% for service in services%}
               <div class="col-sm-6 col-md-3 mb-4">
                   <div class="custom-card card border">
                       <div class="card-body">
-                          <i class="icon ti-crown"></i>
-                          <h5><a href="{% url 'detail' service.id %}">{{service.name}}</a></h5>
+                          <h5><a style="color:" href="{% url 'detail' service.id %}">{{service.name}}</a></h5>
                       </div>
                   </div>
               </div>
@@ -58,14 +60,6 @@
           </div>
         </section>
   <!-- End of Sectoin -->
-
-
-  
-   
-
 </body>
-    
-
-
 
 {% endblock %}

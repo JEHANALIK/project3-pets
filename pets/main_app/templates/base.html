@@ -10,7 +10,7 @@
     <!-- css link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>vet</title>
+    <title>House of Paws</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
     <!-- Page navigation -->
@@ -54,7 +54,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <li><a class="nav-link" href="{% url 'users-profile' %}">Edit Profile</a></li>
-                      <li><a class="nav-link" href="{% url 'change_password' %}">Change Security</a></li>
+                      <li><a class="nav-link" href="{% url 'change_password' %}">Change Password</a></li>
                       <li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
                     </ul>
                  
@@ -67,15 +67,10 @@
           </div>
       </div>          
   </nav>
-              
-    
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} m-2" id="msg" role="alert">{{ message }}</div>
-    {% endfor %}
-{% endif %}
 
-    <main style='margin-top: 15vh'> {% block content%} {%endblock%} </main>
+    <main style='margin-top: 15vh'>  {% block content%} 
+      
+      {%endblock%} </main>
 
     <script>
       setTimeout(function(){
