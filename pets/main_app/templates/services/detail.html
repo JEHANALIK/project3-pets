@@ -38,9 +38,9 @@
     {%endfor%}
 </div>
 
-{% for review in review %}
+{% for rev in review %}
 
-{{ review.user.first_name }} : {{ review.review }}
+{{ rev.user.first_name }} : {{ rev.review }}
 
 {% endfor %}
 
