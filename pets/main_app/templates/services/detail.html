@@ -47,8 +47,15 @@
           </div>
 </section>
 
-{% for review in review %}
-{{ review.user.first_name }} : {{ review.review }}
+
+{% comment %} getting reviews {% endcomment %}
+
+{% for rev in review %}
+
+{{ rev.user.first_name }} : {{ rev.review }}
+
+
+
 {% endfor %}
 <form action="{% url 'add_review' service.id %}" method="POST">
     <section id="about" class="section ">
