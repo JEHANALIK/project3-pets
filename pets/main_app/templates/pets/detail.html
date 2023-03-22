@@ -1,35 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %} 
-
- <section id='app-detail'  class="service">
-  <div class="service text-center">
-      <h1 class="service-subtitle">My {{pets.name}} Detail's</h1>
-  </div> 
-  </section>
- <section id="about" class="section">
-  <div class="container mt-3">
-      <div class="row text-center text-md-left">
-          <div class="col-md-3">
-              <img src="{% static pets.image|cut:'main_app/static' %}" alt="" class="img-thumbnail mb-4">
-          </div>
-          <div class="pl-md-4 col-md-9">
-              <h6 class="title">{{ pets.name }}</h6>
-              <p class="subtitle">Type: {{ pets.type }}</p>
-              <p class="subtitle">Breed: {{ pets.breed }}</p>
-              <p class="subtitle">Description: {{ pets.description }}</p>
-              <p class="subtitle">Age: {{ pets.age }}</p>
-          </div>
-      </div>
-  </div>
-</section>
-
 <section id='app-detail'  class="service">
   <div class="service text-center">
-      <h1 class="service-subtitle">My {{pets.name}} Detail's</h1>
+      <h1 class="service-subtitle mb-4" style="margin-top: -6vh">My {{pets.name}} Detail's</h1>
   </div> 
   </section>
-<div class="card mb-3 mx-auto" style="max-width: 100vh   ;">
+<div class="card mb-3 mx-auto" style="max-width: 100vh;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="{% static pets.image|cut:'main_app/static' %}" class="img-fluid rounded-start" alt="...">
@@ -43,5 +20,18 @@
     </div>
   </div>
 </div>
+<div class="text-center">
+  <a class="btn btn-primary mx-auto w-sm" href="{% url 'pets_update' pets.id %}">Edit</a>
+  <a class="btn btn-primary mx-auto w-sm" href="{% url 'pets_delete' pets.id %}">Delete</a>
+</div>
+
+
+
+
+
+     
+      
+    
+
 
 {% endblock %}

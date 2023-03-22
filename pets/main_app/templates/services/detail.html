@@ -45,11 +45,11 @@
           </div>
 </section>
 
-<form action="{% url 'add_review' service.id %}" method="POST" class="card p-5 mt-5">
-    <section id="about" class="section ">
+<form action="{% url 'add_review' service.id %}" method="POST" class="card w-100 p-3 mx-auto" style="font-size: 10px;">
+<section id="about" class="section ">
   {% csrf_token %}
   {{ form|crispy }}
-  <input type="submit" value="Add Review" class="btn btn-primary mt-5">
+  <input type="submit" value="Add Review" class="btn btn-primary float-right    ">
 </section>
 
 {% for review in review %}

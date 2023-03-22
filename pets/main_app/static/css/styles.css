@@ -6,7 +6,6 @@
   padding-top: 100px;
 }
 
-
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -11192,6 +11191,10 @@ pre {
 
 .page-footer {
   background: #fcfdff;
+  
+  /* margin-bottom: -6vh;
+  margin-top: auto;
+  bottom: 0; */
 }
 
 .page-footer .row {

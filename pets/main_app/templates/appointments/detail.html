@@ -18,7 +18,7 @@
                         <p class="">Booked at {{ appointment.time }} , {{ appointment.date }}</p>
                     </div>
                     <div class="col-sm-3 text-center text-sm-right">
-                        <button href="{% url 'appointments_delete' appointment.id %}"  class="btn btn-light rounded">Cancel Appointment</button>
+                        <a href="{% url 'appointments_delete' appointment.id %}"  class="btn btn-light rounded">Cancel Appointment</a>
                     </div>
                 </div>
             </div>
