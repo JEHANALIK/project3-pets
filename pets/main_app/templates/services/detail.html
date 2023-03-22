@@ -38,6 +38,8 @@
     {%endfor%}
 </div>
 
+{% comment %} getting reviews {% endcomment %}
+
 {% for rev in review %}
 
 {{ rev.user.first_name }} : {{ rev.review }}
