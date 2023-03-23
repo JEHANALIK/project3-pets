@@ -46,6 +46,7 @@
 </section>
 
 <form action="{% url 'add_review' service.id %}" method="POST" class="card w-100 p-3 mx-auto" style="font-size: 10px;">
+    <h2 style='text-align:center'>Reviews</h2>
 <section id="about" class="section ">
   {% csrf_token %}
   {{ form|crispy }}
