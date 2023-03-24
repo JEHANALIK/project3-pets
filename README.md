@@ -19,7 +19,7 @@
     <li><a href="#users-stories">Users Stories</a></li>
     <li><a href="#general-approach">General Approach</a></li>
     <li><a href="#overcoming-challenges">Overcoming Challenges</a></li>
-    <li><a href="#future-enhancement">Future Enhancement</a></li>
+    <li><a href="#future-enhancements">Future Enhancement</a></li>
   </ol>
 </details>
 
@@ -96,7 +96,7 @@ As a team, we first decided the best way to apporoach this project was to think 
 - Showing name of pets in the dropdown menu in the appointment form instead of it returning it as Pets Objects.
 - Including reviews so that they would be tied to the individual service that the review was made for and it would also display the name of the user that made the review.
 
-## Future Enhancement
+## Future Enhancements
 
 - Have the ability to add mulitple vets that can offer different services in addition to the ones already added.
 - Make the services more detailed. For example, specify what type of surgeries the vets can offer.
