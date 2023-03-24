@@ -1,12 +1,14 @@
+<a name="readme-top"></a>
+
 # House Of Paws
 
 <!-- TABLE OF CONTENTS -->
-<a name="readme-top"></a>
 <details>
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#intro">Intro</a></li>
     <li><a href="#technologies-used">Technologies Used</a></li>
+    <li><a href="#team-members">Team Members</a></li>
     <li><a href="#dependencies-instructions">Dependencies Instructions</a></li>
     <li><a href="#application-architecture">Application Architecture</a></li>
     <ul>
@@ -43,6 +45,12 @@ A website for a vet clinic named House Of Paws where users can book an appointme
 
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
+## Team Members
+
+- Zahid Allaulddin | [@zahidala](https://github.com/zahidala)
+- Jehan Ali | [@JEHANALIK](https://github.com/JEHANALIK)
+- Hajar Mohammed | [@hajrmohamed](https://github.com/hajrmohamed)
+- Nadia Husain | [@nadia-husain](https://github.com/nadia-husain)
 
 ## Dependencies Instructions
 
