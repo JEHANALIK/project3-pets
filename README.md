@@ -19,7 +19,7 @@
     <li><a href="#users-stories">Users Stories</a></li>
     <li><a href="#general-approach">General Approach</a></li>
     <li><a href="#overcoming-challenges">Overcoming Challenges</a></li>
-    <li><a href="#future-enhancements">Future Enhancement</a></li>
+    <li><a href="#future-enhancements">Future Enhancements</a></li>
   </ol>
 </details>
 
